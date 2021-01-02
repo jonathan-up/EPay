@@ -1,0 +1,17 @@
+{
+    "name": "jonathan-up/epay",
+    "description": "更简单方便的接入易支付",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jonathan.Liu",
+            "email": "77266837@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "JonathanUp\\": "src"
+        }
+    }
+}
