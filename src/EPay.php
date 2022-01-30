@@ -20,60 +20,12 @@ class EPay
     /*
      * 订单参数
      * */
-    private $type;
-    private $notifyUrl;
-    private $returnUrl;
-    private $outTradeNo;
-    private $name;
-    private $money;
-
-    /**
-     * @param mixed $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
-
-    /**
-     * @param mixed $notifyUrl
-     */
-    public function setNotifyUrl($notifyUrl)
-    {
-        $this->notifyUrl = $notifyUrl;
-    }
-
-    /**
-     * @param mixed $returnUrl
-     */
-    public function setReturnUrl($returnUrl)
-    {
-        $this->returnUrl = $returnUrl;
-    }
-
-    /**
-     * @param mixed $outTradeNo
-     */
-    public function setOutTradeNo($outTradeNo)
-    {
-        $this->outTradeNo = $outTradeNo;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @param mixed $money
-     */
-    public function setMoney($money)
-    {
-        $this->money = $money;
-    }
+    public $type;
+    public $notifyUrl;
+    public $returnUrl;
+    public $outTradeNo;
+    public $name;
+    public $money;
 
     /**
      * EPay constructor.
