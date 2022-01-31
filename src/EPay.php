@@ -46,28 +46,28 @@ class EPay
      *
      * @return string
      */
-    public function order()
+    public function order(): string
     {
         $api = $this->url.'submit.php';
         $data = [
-            "pid"          => trim($this->pid),
-            "type"         => $this->type,
-            "notify_url"   => $this->notifyUrl,
-            "return_url"   => $this->returnUrl,
+            "pid" => trim($this->pid),
+            "type" => $this->type,
+            "notify_url" => $this->notifyUrl,
+            "return_url" => $this->returnUrl,
             "out_trade_no" => $this->outTradeNo,
-            "name"         => $this->name,
-            "money"        => (float)$this->money
+            "name" => $this->name,
+            "money" => (float) $this->money
         ];
 
-        $para_filter  = self::paraFilter($data);
-        $para_sort    = self::argSort($para_filter);
+        $para_filter = self::paraFilter($data);
+        $para_sort = self::argSort($para_filter);
 
-        $signString   = self::createLinkString($para_sort);
+        $signString = self::createLinkString($para_sort);
         $data['sign'] = $this->getSign($signString);
 
         $sHtml = "<form id='epay' name='epay' action='{$api}' method='post'>";
         foreach ($data as $key => $val) {
-            $sHtml.= "<input type='hidden' name='".$key."' value='".$val."'/>";
+            $sHtml .= "<input type='hidden' name='".$key."' value='".$val."'/>";
         }
 
         //submit按钮控件请不要含有name属性
@@ -84,12 +84,12 @@ class EPay
      * @param $data
      * @return bool
      */
-    public function verifySign($data)
+    public function verifySign($data): bool
     {
-        $para_filter  = self::paraFilter($data);
-        $para_sort    = self::argSort($para_filter);
+        $para_filter = self::paraFilter($data);
+        $para_sort = self::argSort($para_filter);
 
-        $signString   = self::createLinkString($para_sort);
+        $signString = self::createLinkString($para_sort);
         $mySign = $this->getSign($signString);
 
         if ($mySign === $data['sign']) {
@@ -108,12 +108,10 @@ class EPay
     {
         $arg = "";
         foreach ($para as $key => $val) {
-            $arg .= $key . "=" . $val . "&";
+            $arg .= $key."=".$val."&";
         }
         //去掉最后一个&字符
-        $arg = substr($arg, 0, -1);
-
-        return $arg;
+        return substr($arg, 0, -1);
     }
 
     /**
@@ -154,7 +152,7 @@ class EPay
      * @param $string
      * @return string
      */
-    protected function getSign($string)
+    protected function getSign($string): string
     {
         return md5($string.$this->key);
     }
